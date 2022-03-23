@@ -34,9 +34,12 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+        {% if user.is_authenticated %}
+        <a class="btn btn-success mx-2" href="/logout">LogOut</a>
+        {% else %}
         <button type="button" class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#loginmodal">Sign In</button>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#signupmodal">Sign Up</button>
-        
+        {% endif %}
       </div>
     </div>
   </nav>
@@ -60,30 +63,32 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        
+        <form action='/signup/' method='post'>
+          {% csrf_token %}
           <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="fname" class="form-label">First Name</label>
-            <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="fname" name="fname" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="lname" class="form-label">Last Name</label>
-            <input type="text" class="form-control" id="lname" name="lname" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="lname" name="lname" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp">
+            <input type="password" class="form-control" id="password" name="password" aria-describedby="emailHelp" required>
           </div>
           <div class="mb-3">
             <label for="cpassword" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" id="cpassword" name="cpassword" aria-describedby="emailHelp">
+            <input type="password" class="form-control" id="cpassword" name="cpassword" aria-describedby="emailHelp" required>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -102,7 +107,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form action="/login" method="post">
+          {% csrf_token %}  
           <div class="mb-3">
             <label for="loginusername" class="form-label">Username</label>
             <input type="text" class="form-control" id="loginusername" name="loginusername" aria-describedby="emailHelp">
