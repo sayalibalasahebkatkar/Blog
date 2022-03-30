@@ -24,10 +24,13 @@
             <input type="hidden" name="postsno" value="{{post.sno}}">
             <input type="submit" value="Submit">
         </form>
-        <div class="row my-3">
-            <div class="col-md-2">Image Here</div>
-            <div class="col-md-10">Comment Here</div>
-        </div>
+        {% for comment in comment%}
+            <div class="row my-3">
+                <div class="col-md-2">Image Here</div>
+                <div class="col-md-10">{{comment.comment}}</div>
+            </div>
+        {% endfor %}
+        
     </div>
     </div>
  {% endblock %}

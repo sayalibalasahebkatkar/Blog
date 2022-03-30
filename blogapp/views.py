@@ -1,8 +1,8 @@
 from multiprocessing import context
-from pyexpat.errors import messages
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from blogapp.models import Blog,BlogComment
+from django.contrib import messages
 
 # Create your views here.
 def bloghome(request):
@@ -29,7 +29,7 @@ def postComment(request):
         post=Blog.objects.get(sno=postsno)
         comment=BlogComment(comment=comment,user=user,post=post)
         comment.save()
-        # messages.success(request,'Your comment has been set successfully')
+        messages.success(request,'Your comment has been set successfully')
     return redirect(f'/blog/{post.slug}')
 
 
