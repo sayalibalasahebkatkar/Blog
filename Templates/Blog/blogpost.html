@@ -14,7 +14,7 @@
             <strong class="d-inline-block mb-2 text-primary">Article by {{post.author}}</strong>
             <h3 class="mb-0 ">{{post.title}}</h3>
             <div class="mb-1 text-muted">Nov 12</div>
-            <p class="card-text mb-auto">{{post.content}}</p>
+            <p class="card-text mb-auto">{{post.content|safe}}</p>
             
         </div>
     <div class="container">
